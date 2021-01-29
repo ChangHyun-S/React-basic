@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const bodyPasrser = require("body-parser");
 const { User } = require("./models/User");
+const config = require('./config/key')
 
 // application/x-www-form-urlencoded 
 app.use(bodyPasrser.urlencoded({extended: true}));
@@ -10,7 +11,7 @@ app.use(bodyPasrser.urlencoded({extended: true}));
 app.use(bodyPasrser.json());
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://lkisa5:1q2w3e4r@boilerplate.j4ppf.mongodb.net/boilerplate?retryWrites=true&w=majority', {
+mongoose.connect(config.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
