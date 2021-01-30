@@ -11,7 +11,7 @@ let auth = (req, res, next) => {
         if (!user) return res.json({ isAuth: false, err: true})
 
         req.token = token
-        req.user = uesr
+        req.user = user
         // next 없으면 middleware에서 갇힘
         next()
     })
