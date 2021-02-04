@@ -28,7 +28,12 @@ function LoginPage() {
         // redux 사용해서 
         dispatch(loginUser(body))
         .then(response => {
-            
+            if(response.payload.loginSuccess) {
+                props.history.push('/')
+            }
+            else {
+                alert('error')
+            }
         })
     }
 
