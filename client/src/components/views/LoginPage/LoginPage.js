@@ -1,3 +1,4 @@
+import { response } from 'express'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginUser } from '../../../_actions/user_action'
@@ -26,6 +27,9 @@ function LoginPage() {
 
         // redux 사용해서 
         dispatch(loginUser(body))
+        .then(response => {
+            
+        })
     }
 
     return (
