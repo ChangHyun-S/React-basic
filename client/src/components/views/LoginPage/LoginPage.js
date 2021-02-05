@@ -1,4 +1,3 @@
-import { response } from 'express'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginUser } from '../../../_actions/user_action'
