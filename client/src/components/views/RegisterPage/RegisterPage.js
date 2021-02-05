@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { loginUser } from '../../../_actions/user_action'
+import { registerUser } from '../../../_actions/user_action'
 
 function RegisterPage(props) {
     const dispatch = useDispatch()
@@ -27,18 +27,24 @@ function RegisterPage(props) {
         // preventDefault 안쓰면 클릭마다 페이지가 리프레쉬됨
         event.preventDefault()
 
+        // 비밀번호 체크
+        if(Password !== ConfirmPassword) {
+            return alert('비밀번호가 다릅니다')
+        }
+
         let body = {
             email: Email,
-            password: Password
+            name: Name,
+            password: Password,
         }
 
         // redux 사용해서 
-        dispatch(loginUser(body))
+        dispatch(registerUser(body))
             .then(response => {
-                if (response.payload.loginSuccess) {
-                    props.history.push('/')
+                if (response.payload.success) {
+                    props.history.push('/login')
                 } else {
-                    alert('Error')
+                    alert('Failed to sign up')
                 }
             })
     }
@@ -60,10 +66,10 @@ function RegisterPage(props) {
                 <input type="password" value={Password} onChange={onPasswordHandler}></input>
 
                 <label>Confirm Password</label>
-                <input type="password" value={ConfirmPassword} onChange={onPasswordHandler}></input>
+                <input type="password" value={ConfirmPassword} onChange={onConfirmPasswordHandler}></input>
                 <br />
                 <button type="submit">
-                    Register
+                    Sign up
                 </button>
             </form>
         </div>
