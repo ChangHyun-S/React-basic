@@ -80,7 +80,9 @@ app.get('/api/users/auth', auth, (req, res) => {
   res.status(200).json({
     // auth.js에서 request에 user를 넣었기 때문에 가능
     _id: req.user._id,
+    // 어드민인지? 아니면 false 맞으면 true
     isAdmin: req.user.role === 0 ? false : true,
+    // 인증된 유저인지?
     isAuth: true,
     email: req.user.email,
     name: req.user.name,
