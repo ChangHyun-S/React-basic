@@ -7,7 +7,8 @@ const { User } = require("./models/User");
 const { auth } = require("./middleware/auth")
 const config = require('./config/key')
 
-// application/x-www-form-urlencoded 
+// application/x-www-form-urlencoded
+// test commit
 app.use(bodyPasrser.urlencoded({ extended: true }));
 
 // application/json 분석해서 가져오는거
